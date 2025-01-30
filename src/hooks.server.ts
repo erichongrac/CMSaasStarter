@@ -1,9 +1,9 @@
 // src/hooks.server.ts
-import { PRIVATE_SUPABASE_SERVICE_ROLE } from "$env/static/private"
-import {
-  PUBLIC_SUPABASE_ANON_KEY,
-  PUBLIC_SUPABASE_URL,
-} from "$env/static/public"
+// import { PRIVATE_SUPABASE_SERVICE_ROLE } from "$env/static/private"
+// import {
+//   PUBLIC_SUPABASE_ANON_KEY,
+//   PUBLIC_SUPABASE_URL,
+// } from "$env/static/public"
 import { createServerClient } from "@supabase/ssr"
 import { createClient } from "@supabase/supabase-js"
 import type { Handle } from "@sveltejs/kit"
@@ -11,8 +11,8 @@ import { sequence } from "@sveltejs/kit/hooks"
 
 export const supabase: Handle = async ({ event, resolve }) => {
   event.locals.supabase = createServerClient(
-    PUBLIC_SUPABASE_URL,
-    PUBLIC_SUPABASE_ANON_KEY,
+    "https://urrcventgwixfozgotql.supabase.co",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVycmN2ZW50Z3dpeGZvemdvdHFsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzgxNTUxNzIsImV4cCI6MjA1MzczMTE3Mn0.lpbMpjvYw9ILkQCgeSOI4FXfUCRtBqGX2_fEZ4lB6Eo",
     {
       cookies: {
         getAll: () => event.cookies.getAll(),
@@ -31,8 +31,8 @@ export const supabase: Handle = async ({ event, resolve }) => {
   )
 
   event.locals.supabaseServiceRole = createClient(
-    PUBLIC_SUPABASE_URL,
-    PRIVATE_SUPABASE_SERVICE_ROLE,
+    "https://urrcventgwixfozgotql.supabase.co",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVycmN2ZW50Z3dpeGZvemdvdHFsIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTczODE1NTE3MiwiZXhwIjoyMDUzNzMxMTcyfQ._Wwe2Ia8xiFiPhPQMuCrhj73VBCJ24UWr0uWCzqZLow",
     { auth: { persistSession: false } },
   )
 
