@@ -1,9 +1,8 @@
-// src/hooks.server.ts
-// import { PRIVATE_SUPABASE_SERVICE_ROLE } from "$env/static/private"
-// import {
-//   PUBLIC_SUPABASE_ANON_KEY,
-//   PUBLIC_SUPABASE_URL,
-// } from "$env/static/public"
+import { PRIVATE_SUPABASE_SERVICE_ROLE } from "$env/static/private"
+import {
+  PUBLIC_SUPABASE_ANON_KEY,
+  PUBLIC_SUPABASE_URL,
+} from "$env/static/public"
 import { createServerClient } from "@supabase/ssr"
 import { createClient } from "@supabase/supabase-js"
 import type { Handle } from "@sveltejs/kit"

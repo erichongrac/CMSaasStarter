@@ -31,6 +31,7 @@ module.exports = {
       files: ["**/*.test.ts", "**/*.spec.ts"],
       rules: {
         "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-irregular-whitespace": "off",
       },
     },
   ],
@@ -41,6 +42,7 @@ module.exports = {
   },
   rules: {
     "no-undef": "off",
+    "@typescript-eslint/no-irregular-whitespace": "off",
     // no-undef has been turned off because of this:
     // basically, it causes issues and TS does those checks so it's redundant
     // https://typescript-eslint.io/linting/troubleshooting#i-get-errors-from-the-no-undef-rule-about-global-variables-not-being-defined-even-though-there-are-no-typescript-errors
