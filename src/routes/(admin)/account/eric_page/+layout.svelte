@@ -4,7 +4,7 @@
 
   export let data: LayoutData
 
-  $: ({ session, profile, error } = data)
+  $: ({ session, profile } = data)
 
   function logProfileData() {
     console.log("All Profile Data:", profile)

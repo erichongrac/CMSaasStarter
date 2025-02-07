@@ -11,24 +11,29 @@ export const load: LayoutServerLoad = async ({
     throw redirect(303, "/login")
   }
 
+  // Get the authenticated user's ID
+  const userId = session.user.id
+
   try {
-    // Fetch all profiles
-    const { data: profiles, error } = await supabase
+    // Fetch profile matching the authenticated user's ID
+    const { data: profile, error } = await supabase
       .from("profiles")
       .select("*")
+      .eq("id", userId)
+      .single() // Use single() since we expect one matching profile
 
     if (error) throw error
 
     return {
       session,
-      profiles: profiles || [],
+      profile: profile || null,
     }
   } catch (error) {
-    console.error("Error loading profiles:", error)
+    console.error("Error loading profile:", error)
     return {
       session,
-      profiles: [],
-      error: "Failed to load profiles",
+      profile: null,
+      error: "Failed to load profile",
     }
   }
 }
